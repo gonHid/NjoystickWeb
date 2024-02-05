@@ -23,7 +23,8 @@
     const usuariosRef = ref(database, 'productos');
 
     //referencia al cuerpo del html
-    const datosProducto = document.getElementById('datosProducto');
+
+    var productosGrid = document.getElementById('productoGrid');
 
     // Realiza una consulta SELECT simple
     onValue(usuariosRef, (snapshot) => {
@@ -34,19 +35,27 @@
         if(data.hasOwnProperty(key)){
           const producto = data[key];
           
+          const card = document.createElement('div')
+          card.className = 'card';
+          const imagenProducto = document.createElement('img')
           const nombreProducto = document.createElement('h5')
           const categoria = document.createElement('p')
-          const descripcion = document.createElement('p')
-          const valor = document.createElement('p')
-          const stock = document.createElement('p')
-                
+          const precio = document.createElement('p')
+          const cantidad = document.createElement('p')
+
+          imagenProducto.src = producto.urlImagen;
           nombreProducto.textContent = producto.nombre;
           categoria.textContent = producto.categoria;
-          descripcion.textContent = producto.descripcion;
-          valor.textContent = producto.valor;
-          stock.textContent = producto.stock;
+          precio.textContent = producto.precio;
+          cantidad.textContent = producto.cantidad;
 
-          datosProducto.appendChild(nombreProducto, categoria, descripcion, valor, stock)
+          card.appendChild(imagenProducto)
+          card.appendChild(nombreProducto)
+          card.appendChild(categoria)
+          card.appendChild(precio)
+          card.appendChild(cantidad)
+
+          productosGrid.appendChild(card)
   
         }
       }

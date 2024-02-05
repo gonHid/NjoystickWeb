@@ -23,19 +23,9 @@
 <body>
     <!--Inicio Header-->
     <header class="header" id="inicio">
-        <!--Inicio NavBar-->
-        <img src="./images/hamburguesa.svg" alt="" class="hamburguer">
-        <nav class="menu-navegacion">
-            <a href="#inicio">Inicio</a>
-            <a href="#footer">Contacto</a>
-            <a href="./html/vistaIntranet.html" target="_blank">Intranet</a>
-        </nav>
-        <!--Final NavBar-->
-
         <div class="contenedor head">
             <div class="fondo-titulo">
                 <h1 class="titulo">Bienvenidos a NJoystick</h1>
-                <p class="copy"><strong>Tus vecinos y amigos gamers</strong></p>
             </div>
         </div>
     </header>
@@ -49,7 +39,7 @@
         <h1 class="titulo-catalogo">Catalogo de Productos</h1>
         <div class="card-grid">
             <div class="card">
-                <a href="html/vistaProductos.html">
+                <a id="videojuegos" data-id="videojuegos">
                     <img src="images/galeríaVideojuegos.jpeg" alt="Videojuegos" class="card-image">
                     <div class="card-body">
                         <h5 class="card-title">Videojuegos</h5>
@@ -57,7 +47,7 @@
                 </a>
             </div>
             <div class="card">
-                <a href="html/vistaProductos.html">
+                <a id="mangas" data-id="mangas">
                     <img src="images/galeríaManga.jpeg" alt="Manga" class="card-image">
                     <div class="card-body">
                         <h5 class="card-title">Manga</h5>
@@ -65,7 +55,7 @@
                 </a>
             </div>
             <div class="card">
-                <a href="html/vistaProductos.html">
+                <a id="figuras" data-id="figuras">
                     <img src="images/galeríaFiguras.jpeg" alt="Figuras" class="card-image">
                     <div class="card-body">
                         <h5 class="card-title">Figuras</h5>
@@ -73,7 +63,7 @@
                 </a>
             </div>
             <div class="card">
-                <a href="html/vistaProductos.html">
+                <a id="accesorios" data-id="accesorios">
                     <img src="images/galeríaStickers.jpg" alt="Accesorios" class="card-image">
                     <div class="card-body">
                         <h5 class="card-title">Accesorios</h5>
@@ -92,28 +82,25 @@
 
         <!--Inicio Preguntas Frecuentes-->
         <section class="preguntasFrec" id="servicio">
-            <h2 class="subtitulo">Preguntas Frecuentes</h2>
-            <p class="subtituloPreg">Para más información contáctanos <a href="mailto:">aquí</a></p>
+            <h2 class="subtitulo"><b>Preguntas Frecuentes</b></h2>
+            <p class="subtituloPreg">Para más información contáctanos <a href="https://www.instagram.com/njoystick/" target="_blank">aquí</a></p>
             <div class="contenedor-servicio">
                 <img src="images/Gaming _Isometric.svg" alt="">
                 <div class="checklist-servicio">
                     <div class="service">
                         <h3 class="n-service"><span class="number">1</span>¿Esto es una Tienda Online?</h3>
-                        <p>De momento no. Hemos generado esta página para que como clientes puedan
+                        <p class="text-justify">De momento no. Hemos generado esta página para que como clientes puedan
                             visualizar nuestro catálogo de manera cómoda, atractiva y profesional.
                         </p>
                     </div>
                     <div class="service">
-                        <h3 class="n-service"><span class="number">2</span>Pregunta 2</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Pariatur minus delectus iure. Tenetur veritatis perspiciatis vel unde,
-                            fuga similique ducimus!</p>
+                        <h3 class="n-service"><span class="number">2</span>¿Tienen productos usados?</h3>
+                        <p class="text-justify">Si, principalmente videojuegos, los cuales sólo los manejamos presencialmente.
+                        </p>
                     </div>
                     <div class="service">
-                        <h3 class="n-service"><span class="number">3</span>Pregunta 3</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Pariatur minus delectus iure. Tenetur veritatis perspiciatis vel unde,
-                            fuga similique ducimus!</p>
+                        <h3 class="n-service"><span class="number">3</span>¿Compran juegos usados?</h3>
+                        <p class="text-justify">No, no compramos juegos usados. Pero, podemos recibir juegos en parte de pago, previa evaluación del producto.</p>
                     </div>
                 </div>
             </div>
@@ -132,25 +119,16 @@
                     <li><strong>Dirección:</strong> El Roble 625 segundo piso, Chillán.</li>
                     <li><strong>Ofrecemos:</strong> Videojuegos, Mangas, Figuras y Accesorios.</li>
                     <li><strong>Horarios:</strong></li>
-                    Lunes a Viernes 11:00 a 18:30 hrs.<br>
+                    Lunes a Viernes 11:00 a 19:00 hrs.<br>
                     Sábado de 12:00 a 17:00 hrs.
                 </ul>
             </div>
             <div class="social-media">
-                <a href="https://www.facebook.com/njoysticktienda" target="_blank" class="social-media-icon">
-                    <i class='bx bxl-facebook-square'></i>
-                </a>
                 <a href="https://www.twitch.tv/njoystick_live" target="_blank" class="social-media-icon">
                     <i class='bx bxl-twitch'></i>
                 </a>
                 <a href="https://www.instagram.com/njoystick/" target="_blank" class="social-media-icon">
                     <i class='bx bxl-instagram-alt'></i>
-                </a>
-                <a href="tel:+569 6646 9003" class="social-media-icon">
-                    <i class='bx bxs-phone-incoming'></i>
-                </a>
-                <a href="mailto:" class="social-media-icon">
-                    <i class='bx bxs-envelope'></i>
                 </a>
             </div>
         </div>

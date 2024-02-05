@@ -92,12 +92,7 @@ header{
     text-decoration: none;
 }
 
-.fondo-titulo{
-    background-color: #252940;
-    border-radius: 12px;
-    padding: 10px;
-    opacity: .9;
-    z-index: 99;
+.imagen-header{
 }
 
 .titulo{

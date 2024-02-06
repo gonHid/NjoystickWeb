@@ -49,13 +49,13 @@
   
             imagenProducto.src = producto.urlImagen;
             nombreProducto.textContent = producto.nombre;
-            categoria.textContent = producto.categoria;
-            precio.textContent = producto.precio;
-            cantidad.textContent = producto.cantidad;
+            //categoria.textContent = producto.categoria;
+            precio.textContent = "Precio: $" + producto.precio;
+            cantidad.textContent = "Stock disponible: "+ producto.cantidad;
   
             card.appendChild(imagenProducto)
             card.appendChild(nombreProducto)
-            card.appendChild(categoria)
+            // card.appendChild(categoria)
             card.appendChild(precio)
             card.appendChild(cantidad)
 

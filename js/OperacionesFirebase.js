@@ -2,6 +2,8 @@
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
 
+    const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
+
     // Configuración de Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
@@ -35,28 +37,30 @@
         if(data.hasOwnProperty(key)){
           const producto = data[key];
           
-          const card = document.createElement('div')
-          card.className = 'card';
-          const imagenProducto = document.createElement('img')
-          const nombreProducto = document.createElement('h5')
-          const categoria = document.createElement('p')
-          const precio = document.createElement('p')
-          const cantidad = document.createElement('p')
-
-          imagenProducto.src = producto.urlImagen;
-          nombreProducto.textContent = producto.nombre;
-          categoria.textContent = producto.categoria;
-          precio.textContent = producto.precio;
-          cantidad.textContent = producto.cantidad;
-
-          card.appendChild(imagenProducto)
-          card.appendChild(nombreProducto)
-          card.appendChild(categoria)
-          card.appendChild(precio)
-          card.appendChild(cantidad)
-
-          productosGrid.appendChild(card)
+          if(producto.categoria ===categoriaSeleccionada){
+           
+            const card = document.createElement('div')
+            card.className = 'card';
+            const imagenProducto = document.createElement('img')
+            const nombreProducto = document.createElement('h5')
+            const categoria = document.createElement('p')
+            const precio = document.createElement('p')
+            const cantidad = document.createElement('p')
   
+            imagenProducto.src = producto.urlImagen;
+            nombreProducto.textContent = producto.nombre;
+            categoria.textContent = producto.categoria;
+            precio.textContent = producto.precio;
+            cantidad.textContent = producto.cantidad;
+  
+            card.appendChild(imagenProducto)
+            card.appendChild(nombreProducto)
+            card.appendChild(categoria)
+            card.appendChild(precio)
+            card.appendChild(cantidad)
+  
+            productosGrid.appendChild(card)
+          }
         }
       }
     });

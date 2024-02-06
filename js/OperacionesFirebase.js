@@ -40,7 +40,7 @@
           if(producto.categoria ===categoriaSeleccionada){
            
             const card = document.createElement('div')
-            card.className = 'card';
+            card.className = 'card w-100';
             const imagenProducto = document.createElement('img')
             const nombreProducto = document.createElement('h5')
             const categoria = document.createElement('p')
@@ -58,6 +58,7 @@
             card.appendChild(categoria)
             card.appendChild(precio)
             card.appendChild(cantidad)
+
   
             productosGrid.appendChild(card)
           }

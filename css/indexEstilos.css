@@ -21,6 +21,16 @@ body{
     padding: 60px 0;
 }
 
+.contenedorCat{
+    margin :0;
+    display: flex;
+}
+
+.botonCat{
+    flex: 1;
+    margin :0;
+}
+
 header{
     height: 40vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.5) 0%, rgba(0, 241, 254, 0.5) 100%),

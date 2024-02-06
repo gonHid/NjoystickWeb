@@ -31,5 +31,5 @@ document.addEventListener('DOMContentLoaded', function() {
 function redirigirPagina(elemento) {
     var id=elemento.getAttribute("data-id");
     localStorage.setItem('idSeleccionada', id);
-    window.location.href = "html/vistaProductos.html";
+    window.location.href = "../html/vistaProductos.html";
 }

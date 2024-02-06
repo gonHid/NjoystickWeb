@@ -22,13 +22,14 @@ body{
 }
 
 .contenedorCat{
+    gap: 0px!important;
     margin :0;
-    display: flex;
 }
 
 .botonCat{
     flex: 1;
     margin :0;
+    padding: 0;
 }
 
 header{

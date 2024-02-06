@@ -48,6 +48,7 @@
             const cantidad = document.createElement('p')
   
             imagenProducto.src = producto.urlImagen;
+            
             nombreProducto.textContent = producto.nombre;
             categoria.textContent = producto.categoria;
             precio.textContent = producto.precio;

@@ -32,7 +32,7 @@
     onValue(usuariosRef, (snapshot) => {
       const data = snapshot.val();
       console.log("Productos stock:", data);
-
+      productosGrid.innerHTML = '';
       for (let key in data){
         if(data.hasOwnProperty(key)){
           const producto = data[key];

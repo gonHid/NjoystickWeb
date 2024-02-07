@@ -188,7 +188,7 @@ header{
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
 }
 /*Estilos para el container*/
@@ -204,6 +204,7 @@ header{
     will-change: transform;
     cursor: pointer;
     width: 250px;
+    
 }
 
 /*Estilo para quitar el subrayado de las anclas*/
@@ -253,7 +254,7 @@ a{
 footer{
     background: #4BC3F2;
     padding-bottom: 0.1px;/*Para el colapsado de márgenes*/
-
+    
 }
 
 .footer-content{

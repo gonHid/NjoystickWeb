@@ -54,28 +54,28 @@ function mostrarProductos(data, pagina) {
     card.className = 'card w-100';
     const imagenProducto = document.createElement('img');
     // Establecer tamaño máximo y mínimo sin deformar la imagen
-imagenProducto.style.maxWidth = '290px';
-imagenProducto.style.maxHeight = '370px';
-imagenProducto.style.minHeight = '370px';
-            const nombreProducto = document.createElement('h5');
-            const categoria = document.createElement('p');
-            const precio = document.createElement('p');
-            const cantidad = document.createElement('p');
+    imagenProducto.style.maxWidth = '290px';
+    imagenProducto.style.maxHeight = '370px';
+    imagenProducto.style.minHeight = '370px';
+    const nombreProducto = document.createElement('h5');
+    const categoria = document.createElement('p');
+    const precio = document.createElement('p');
+    const cantidad = document.createElement('p');
   
-            imagenProducto.src = producto.urlImagen;
+    imagenProducto.src = producto.urlImagen;
             
-            nombreProducto.textContent = producto.nombre;
-            categoria.textContent = producto.categoria;
-            precio.textContent = producto.precio;
-            cantidad.textContent = producto.cantidad;
+    nombreProducto.textContent = producto.nombre;
+    categoria.textContent = producto.categoria;
+    precio.textContent = producto.precio;
+    cantidad.textContent = producto.cantidad;
   
-            card.appendChild(imagenProducto)
-            card.appendChild(nombreProducto)
-            card.appendChild(categoria)
-            card.appendChild(precio)
-            card.appendChild(cantidad)
-            card.style.maxWidth = '310px';
-            card.style.maxHeight = '540px';
+    card.appendChild(imagenProducto)
+    card.appendChild(nombreProducto)
+    card.appendChild(categoria)
+    card.appendChild(precio)
+    card.appendChild(cantidad)
+    card.style.maxWidth = '310px';
+    card.style.maxHeight = '540px';
     productosGrid.appendChild(card);
   }
 }

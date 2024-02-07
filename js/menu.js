@@ -11,19 +11,19 @@ function agregarEvento(id, evento, funcion) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    agregarEvento('videojuegos', 'click', function() {
+    agregarEvento('Videojuegos', 'click', function() {
         redirigirPagina(this);
     });
 
-    agregarEvento('mangas','click', function() {
+    agregarEvento('Mangas','click', function() {
         redirigirPagina(this);
     });
 
-    agregarEvento('figuras','click', function() {
+    agregarEvento('Figuras','click', function() {
         redirigirPagina(this);
     });
 
-    agregarEvento('accesorios','click', function() {
+    agregarEvento('Otros','click', function() {
         redirigirPagina(this);
     });
 
@@ -31,5 +31,5 @@ document.addEventListener('DOMContentLoaded', function() {
 function redirigirPagina(elemento) {
     var id=elemento.getAttribute("data-id");
     localStorage.setItem('idSeleccionada', id);
-    window.location.href = "html/vistaProductos.html";
+    window.location.href = "../html/vistaProductos.html";
 }

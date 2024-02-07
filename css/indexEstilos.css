@@ -21,6 +21,17 @@ body{
     padding: 60px 0;
 }
 
+.contenedorCat{
+    gap: 0px!important;
+    margin :0;
+}
+
+.botonCat{
+    flex: 1;
+    margin :0;
+    padding: 0;
+}
+
 header{
     height: 40vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.5) 0%, rgba(0, 241, 254, 0.5) 100%),
@@ -92,12 +103,7 @@ header{
     text-decoration: none;
 }
 
-.fondo-titulo{
-    background-color: #252940;
-    border-radius: 12px;
-    padding: 10px;
-    opacity: .9;
-    z-index: 99;
+.imagen-header{
 }
 
 .titulo{
@@ -182,7 +188,7 @@ header{
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
 }
 /*Estilos para el container*/
@@ -198,6 +204,7 @@ header{
     will-change: transform;
     cursor: pointer;
     width: 250px;
+    
 }
 
 /*Estilo para quitar el subrayado de las anclas*/
@@ -247,7 +254,7 @@ a{
 footer{
     background: #4BC3F2;
     padding-bottom: 0.1px;/*Para el colapsado de márgenes*/
-
+    
 }
 
 .footer-content{
@@ -300,7 +307,19 @@ footer{
         line-height: 90px;
 }
 
-
+.sinStock{
+    filter: grayscale(1);
+        transition-property: filter;
+        transition-duration: 1s;     
+}
+.marca-agua {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3); /* Color de la marca de agua */
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 0;
+}
 @media screen and (max-width:800px){
     .menu-navegacion{
         width: 50vw;
@@ -348,4 +367,8 @@ footer{
 }
 h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     font-family: 'Roboto', sans-serif;
+}
+.img-nj-banner{
+    width: 25%;
+    border-radius: 50%;
 }

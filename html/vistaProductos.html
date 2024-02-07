@@ -21,37 +21,60 @@
     <title>Catálogo</title>
 </head>
 
-<!--
-    Listo para copiar y pegar
-    <div class="card">
-    <a href="./html/des_product.html">
-        <img src="./imgs/zelda.jpg" alt="Imagen 1" class="card-image">
-        <div class="card-body">
-            <h5 class="card-title"><a href="#titulo1">The Legend of Zelda™: Tears of the Kingdom</a></h5>
-            <p class="card-text">Copia original formato fisico del reciente lanzamiento The Legend of
-                Zelda™: Tears of the Kingdom.</p>
-            <p class="card-text"> <strong>$60.000</strong></p>
-        </div>
-    </a>
-</div>
-  -->
 
 <body>
-    <header>
-        <img src="../images/hamburguesa.svg" alt="" class="hamburguer">
-        <nav class="menu-navegacion">
-            <a href="../index.html">Inicio</a>
-            <a href="#footer">Contacto</a>
-            <a href="../html/vistaIntranet.html" target="_blank">Intranet</a>
-        </nav>
-    </header>
+<header class="header" id="inicioheader">
+    <div class="contenedor head">
+        <a href="../index.html"
+           class="contenedor-banner">
+
+            <img
+                    class="img-nj-banner"
+                    src="../images/logoNJ.png" class="footer-banner">
+        </a>
+    </div>
+</header>
     <div class="container">
         <h1 class="mt-4 mb-4 titulo-catalogo">Catálogo de Productos</h1>
+        <div class="card-grid contenedorCat" >
+            <div class="card botonCat w-100 mb-0">
+                <a id="Videojuegos" data-id="Videojuegos">
+                    <div class="card-body">
+                        <h3 class="card-title">Videojuegos</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="card botonCat w-100">
+                <a id="Mangas" data-id="Mangas">
+                    <div class="card-body">
+                        <h3 class="card-title">Manga</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="card botonCat w-100 mb-0" >
+                <a id="Figuras" data-id="Figuras">
+                    <div class="card-body">
+                        <h3 class="card-title">Figuras</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="card botonCat w-100 mb-0">
+                <a id="Otros" data-id="Otros">
+                    <div class="card-body">
+                        <h3 class="card-title">Accesorios</h3>
+                    </div>
+                </a>
+            </div>
+         </div>
         <div class="card-grid" id="productoGrid">
             
         </div>
+
+        <nav>
+            <ul id="pagination" class="pagination justify-content-center"></ul>
+        </nav>
     </div>
-    <footer id="footer" class="mt-4 mb-4">
+    <footer id="footer">
         <div class="contenedor footer-content">
             <div class="contact-us">
                 <img src="../images/njoystick_banner.png" class="footer-banner">
@@ -59,7 +82,7 @@
                     <li><strong>Dirección:</strong> El Roble 625 segundo piso, Chillán.</li>
                     <li><strong>Ofrecemos:</strong> Videojuegos, Mangas, Figuras y Accesorios.</li>
                     <li><strong>Horarios:</strong></li>
-                    Lunes a Viernes 11:00 a 18:30 hrs.<br>
+                    Lunes a Viernes 11:00 a 19:00 hrs.<br>
                     Sábado de 12:00 a 17:00 hrs.
                 </ul>
             </div>
@@ -72,6 +95,7 @@
                 </a>
             </div>
         </div>
+        <div class="marca-agua">Desarrollado por TenaciousDev</div>
     </footer>
 
     <!--Inicio Scripts-->

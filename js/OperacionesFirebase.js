@@ -42,6 +42,8 @@
             const card = document.createElement('div')
             card.className = 'card w-100';
             const imagenProducto = document.createElement('img')
+           //estilo a la imagen de la card
+            imagenProducto.style= 'min-height: 300px; max-height: 300px';
             const nombreProducto = document.createElement('h5')
             const categoria = document.createElement('p')
             const precio = document.createElement('p')

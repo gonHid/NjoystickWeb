@@ -313,11 +313,12 @@ footer{
         transition-duration: 1s;     
 }
 .marca-agua {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.3); /* Color de la marca de agua */
     text-align: right;
-    margin-right: 20px
+    margin-right: 20px;
+    margin-top: 0;
 }
 @media screen and (max-width:800px){
     .menu-navegacion{

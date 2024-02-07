@@ -73,6 +73,7 @@ function mostrarProductos(data, pagina) {
     card.appendChild(precio)
     card.appendChild(cantidad)
     card.style.maxWidth = '310px';
+    card.style.minWidth = '310px';
     card.style.maxHeight = '540px';
     productosGrid.appendChild(card);
   }

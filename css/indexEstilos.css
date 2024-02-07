@@ -307,6 +307,11 @@ footer{
         line-height: 90px;
 }
 
+.sinStock{
+    filter: grayscale(1);
+        transition-property: filter;
+        transition-duration: 1s;     
+}
 
 @media screen and (max-width:800px){
     .menu-navegacion{

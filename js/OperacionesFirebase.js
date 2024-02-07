@@ -52,11 +52,15 @@ function mostrarProductos(data, pagina) {
   for (const producto of productosEnPagina) {
     const card = document.createElement('div');
     card.className = 'card w-100';
+    
     const imagenProducto = document.createElement('img');
     // Establecer tamaño máximo y mínimo sin deformar la imagen
     imagenProducto.style.maxWidth = '290px';
     imagenProducto.style.maxHeight = '370px';
     imagenProducto.style.minHeight = '370px';
+    if (producto.cantidad === 0) {
+      imagenProducto.className='sinStock';
+    }
     const nombreProducto = document.createElement('h5');
     const categoria = document.createElement('p');
     const precio = document.createElement('p');
@@ -75,6 +79,7 @@ function mostrarProductos(data, pagina) {
     card.style.maxWidth = '310px';
     card.style.minWidth = '310px';
     card.style.maxHeight = '540px';
+    
     productosGrid.appendChild(card);
   }
 }

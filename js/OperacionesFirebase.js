@@ -56,6 +56,7 @@ function mostrarProductos(data, pagina) {
     // Establecer tamaño máximo y mínimo sin deformar la imagen
 imagenProducto.style.maxWidth = '290px';
 imagenProducto.style.maxHeight = '370px';
+imagenProducto.style.minHeight = '370px';
             const nombreProducto = document.createElement('h5');
             const categoria = document.createElement('p');
             const precio = document.createElement('p');
@@ -73,7 +74,7 @@ imagenProducto.style.maxHeight = '370px';
             card.appendChild(categoria)
             card.appendChild(precio)
             card.appendChild(cantidad)
-            card.style.maxWidth = '300px';
+            card.style.maxWidth = '310px';
             card.style.maxHeight = '540px';
     productosGrid.appendChild(card);
   }

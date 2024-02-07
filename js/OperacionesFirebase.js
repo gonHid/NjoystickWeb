@@ -52,11 +52,14 @@ function mostrarProductos(data, pagina) {
   for (const producto of productosEnPagina) {
     const card = document.createElement('div');
     card.className = 'card w-100';
-    const imagenProducto = document.createElement('img')
-            const nombreProducto = document.createElement('h5')
-            const categoria = document.createElement('p')
-            const precio = document.createElement('p')
-            const cantidad = document.createElement('p')
+    const imagenProducto = document.createElement('img');
+    // Establecer tamaño máximo y mínimo sin deformar la imagen
+imagenProducto.style.maxWidth = '290px';
+imagenProducto.style.maxHeight = '370px';
+            const nombreProducto = document.createElement('h5');
+            const categoria = document.createElement('p');
+            const precio = document.createElement('p');
+            const cantidad = document.createElement('p');
   
             imagenProducto.src = producto.urlImagen;
             
@@ -70,13 +73,16 @@ function mostrarProductos(data, pagina) {
             card.appendChild(categoria)
             card.appendChild(precio)
             card.appendChild(cantidad)
-
+            card.style.maxWidth = '300px';
+            card.style.maxHeight = '540px';
     productosGrid.appendChild(card);
   }
 }
 
 function actualizarPaginador(data) {
-  const totalProductos = Object.values(data).filter(producto => producto.categoria === categoriaSeleccionada).length;
+  const totalProductos = Object.values(data)
+  .filter(producto => producto.categoria === categoriaSeleccionada)
+  .length;
   const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
 
   const paginador = document.getElementById('pagination');

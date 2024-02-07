@@ -58,19 +58,22 @@ function mostrarProductos(data, pagina) {
     imagenProducto.style.maxWidth = '290px';
     imagenProducto.style.maxHeight = '370px';
     imagenProducto.style.minHeight = '370px';
-    if (producto.cantidad === 0) {
-      imagenProducto.className='sinStock';
-    }
+   
     const nombreProducto = document.createElement('h5');
     const categoria = document.createElement('p');
     const precio = document.createElement('p');
     const cantidad = document.createElement('p');
-  
+    if (producto.cantidad === 0) {
+      imagenProducto.className='sinStock';
+      cantidad.textContent = "SIN STOCK";
+    }else{
+
+      cantidad.textContent = "Stock disponible: "+ producto.cantidad;
+    }
     imagenProducto.src = producto.urlImagen;
             
     nombreProducto.textContent = producto.nombre;
     precio.textContent = "Precio: $" + producto.precio;
-    cantidad.textContent = "Stock disponible: "+ producto.cantidad;
   
     card.appendChild(imagenProducto)
     card.appendChild(nombreProducto)

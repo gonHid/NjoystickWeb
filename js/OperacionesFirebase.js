@@ -4,7 +4,7 @@
 
     const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
-    const productosPorPagina = 2;
+    const productosPorPagina = 8;
     // Configuración de Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",

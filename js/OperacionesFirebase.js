@@ -3,7 +3,8 @@
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
 
     const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
-
+    let paginaActual = 1;
+    const productosPorPagina = 2;
     // Configuración de Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
@@ -32,16 +33,26 @@
     onValue(usuariosRef, (snapshot) => {
       const data = snapshot.val();
       console.log("Productos stock:", data);
-      productosGrid.innerHTML = '';
-      for (let key in data){
-        if(data.hasOwnProperty(key)){
-          const producto = data[key];
-          
-          if(producto.categoria ===categoriaSeleccionada){
-           
-            const card = document.createElement('div')
-            card.className = 'card w-100';
-            const imagenProducto = document.createElement('img')
+      mostrarProductos(data, paginaActual);
+      // Actualizar el paginador
+      actualizarPaginador(data);
+    });
+
+    // Define la cantidad de productos por página
+
+
+function mostrarProductos(data, pagina) {
+  const inicio = (pagina - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+  const productosEnPagina = Object.values(data)
+    .filter(producto => producto.categoria === categoriaSeleccionada)
+    .slice(inicio, fin);
+
+  productosGrid.innerHTML = '';
+  for (const producto of productosEnPagina) {
+    const card = document.createElement('div');
+    card.className = 'card w-100';
+    const imagenProducto = document.createElement('img')
             const nombreProducto = document.createElement('h5')
             const categoria = document.createElement('p')
             const precio = document.createElement('p')
@@ -60,12 +71,27 @@
             card.appendChild(precio)
             card.appendChild(cantidad)
 
-  
-            productosGrid.appendChild(card)
-          }
-        }
-      }
+    productosGrid.appendChild(card);
+  }
+}
+
+function actualizarPaginador(data) {
+  const totalProductos = Object.values(data).filter(producto => producto.categoria === categoriaSeleccionada).length;
+  const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
+
+  const paginador = document.getElementById('pagination');
+  paginador.innerHTML = '';
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    const botonPagina = document.createElement('button');
+    botonPagina.textContent = i;
+    botonPagina.addEventListener('click', () => {
+      paginaActual = i;
+      mostrarProductos(data, paginaActual);
     });
+    paginador.appendChild(botonPagina);
+  }
+}
 
     // Iterar sobre los datos y mostrar la informacion del producto
     

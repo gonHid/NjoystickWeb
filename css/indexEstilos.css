@@ -21,6 +21,13 @@ body{
     padding: 60px 0;
 }
 
+.contenedorGaleria{
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
 .contenedorCat{
     gap: 0px!important;
     margin :0;
@@ -190,6 +197,12 @@ header{
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     gap: 10px;
     padding: 20px;
+}
+.imagenGaleria {
+  min-height: 400px;
+  max-height: 400px;
+  min-width: 300px;
+  border: 1px solid #add8e6;
 }
 /*Estilos para el container*/
 .contenedor{

@@ -320,6 +320,13 @@ footer{
     margin-right: 20px;
     margin-top: 0;
 }
+.texto-con-borde {
+    font-size: 20px;
+    text-shadow: -1px -1px 0 black,  
+                  1px -1px 0 black,
+                 -1px 1px 0 black,
+                  1px 1px 0 black; /* Simula un borde negro */
+}
 @media screen and (max-width:800px){
     .menu-navegacion{
         width: 50vw;

@@ -13,16 +13,16 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.contenedor{
+.contenedor, .preguntasFrec{
     width: 90%;
+    max-width: 1200px;
     overflow: hidden;
     margin: auto;
     padding: 60px 0;
 }
 
-.preguntasFrec{
+.contenedorGaleria{
     width: 90%;
-    max-width: 1200px;
     overflow: hidden;
     margin: auto;
     padding: 60px 0;
@@ -198,7 +198,12 @@ header{
     gap: 10px;
     padding: 20px;
 }
-
+.imagenGaleria {
+  min-height: 400px;
+  max-height: 400px;
+  min-width: 300px;
+  border: 1px solid #add8e6;
+}
 /*Estilos para el container*/
 .contenedor{
     padding: 20px;
@@ -214,10 +219,7 @@ header{
     width: 250px;
     
 }
-.imageGalery{
-   min-height: 396px;
-   max-height: 396px;
-}
+
 /*Estilo para quitar el subrayado de las anclas*/
 a{
     text-decoration: none;

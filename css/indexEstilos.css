@@ -13,7 +13,14 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.contenedor, .preguntasFrec{
+.contenedor{
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.preguntasFrec{
     width: 90%;
     max-width: 1200px;
     overflow: hidden;
@@ -191,6 +198,7 @@ header{
     gap: 10px;
     padding: 20px;
 }
+
 /*Estilos para el container*/
 .contenedor{
     padding: 20px;
@@ -206,7 +214,10 @@ header{
     width: 250px;
     
 }
-
+.imageGalery{
+   min-height: 396px;
+   max-height: 396px;
+}
 /*Estilo para quitar el subrayado de las anclas*/
 a{
     text-decoration: none;

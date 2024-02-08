@@ -1,25 +1,13 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+    import { firebaseConfig } from "../config/config.js";
 
     const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
     const productosPorPagina = 8;
     // Configuración de Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
-        authDomain: "njoystickbd.firebaseapp.com",
-        databaseURL: "https://njoystickbd-default-rtdb.firebaseio.com/",
-        projectId: "njoystickbd",
-        storageBucket: "njoystickbd.appspot.com",
-        messagingSenderId: "9313380979",
-        appId: "1:9313380979:web:745bc3e16984d4d52b1806",
-        measurementId: "G-S464MG8HZN"
-      };
-
     // Inicializa Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
 
     // Obtiene una referencia a la base de datos
     const database = getDatabase(app);

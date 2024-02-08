@@ -55,12 +55,12 @@ header{
 .head{
     text-align: center;
     padding: 0; /*Para sobreescribir el padding de .contenedor*/
-    height: 100%;
     display: flex; /*Lo hago flexible para que se posicione:*/
     justify-content: center; /*vertical*/
     align-items: center; /*horizontal*/
     flex-direction: column; /*para que un texto vaya sobre el otro*/
     color: #F2F2F2;
+    margin-top: 60px;
 }
 
 .hamburguer{
@@ -372,10 +372,20 @@ footer{
         margin-bottom: 40px;
     }
 }
+@media only screen and (max-width: 530px) {
+    .img-nj-banner {
+        width: 70% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
 h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     font-family: 'Roboto', sans-serif;
 }
 .img-nj-banner{
     width: 25%;
     border-radius: 50%;
+}
+.img-nj-barnav{
+    border-radius: 50%;
+    width:40px;
+    height:40px;
 }

@@ -1,32 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Estilos-->
-    <link rel="stylesheet" href="css/indexEstilos.css">
-    <!--Box Icons ref-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!--Font Family: Roboto en Light 300, Regular 400 y Bold 700-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!--End Font Family-->
-    <!--Boostrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!--Favicon-->
-    <link rel="icon" type="image/jpg" href="./images/favicon.png">
-    <title>Njoystick</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Estilos-->
+        <link rel="stylesheet" href="css/indexEstilos.css">
+        <!--Box Icons ref-->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <!--Font Family: Roboto en Light 300, Regular 400 y Bold 700-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <!--Boostrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <!--Favicon-->
+        <link rel="icon" type="image/jpg" href="./images/favicon.png">
+        <title>Njoystick</title>
+    
+        <!-- Aquí agregamos el script de Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </head>
 
 <body>
     <!--Inicio Header-->
     <header class="header" id="inicioheader">
-        <div class="contenedor head">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/njoystick_logo.jpeg" alt="Bootstrap" class="img-nj-barnav">
+                  </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#inicioheader">Inicio</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catálogo
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#" >Videojuegos</a></li>
+                        <li><a class="dropdown-item" href="#" id="Mangas" data-id="Mangas">Manga</a></li>
+                        <li><a class="dropdown-item" href="#" id="Figuras" data-id="Figuras">Figuras</a></li>
+                        <li><a class="dropdown-item" href="#" id="Papeleria" data-id="Papeleria">Papelería</a></li>
+                        <li><a class="dropdown-item" href="#" id="Otros" data-id="Otros">Accesorios</a></li>
+                    </ul>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#servicio">Preguntas Frecuentes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#footer">Contacto</a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
+          <div class="contenedor head">
             <a href="index.html"
                class="contenedor-banner">
-
+    
             <img
                     class="img-nj-banner"
                     src="./images/logoNJ.png" class="footer-banner">
@@ -34,11 +73,11 @@
         </div>
     </header>
     <!--Final Header-->
-
+    
     <!--Inicio Main-->
     <main>
         <!--Inicio Galería-->
-        <section class=".galeria">
+        <section class=".galeria" id="galeria">
         <div class="contenedor">
         <h1 class="titulo-catalogo">Catálogo de Productos</h1>
         <div class="card-grid">
@@ -101,13 +140,14 @@
                 <div class="checklist-servicio">
                     <div class="service">
                         <h3 class="n-service"><span class="number">1</span>¿Esto es una Tienda Online?</h3>
-                        <p class="text-justify">De momento no. Hemos generado esta página para que como clientes puedan
+                        <p class="text-justify">Somos una tienda física con ubicación en Estamos ubicados en Calle El Roble 627 segundo piso, Chillán. A un costado de Liquimax. Hemos generado esta página para que como clientes puedan
                             visualizar nuestro catálogo de manera cómoda, atractiva y profesional.
                         </p>
                     </div>
                     <div class="service">
                         <h3 class="n-service"><span class="number">2</span>¿Tienen productos usados?</h3>
-                        <p class="text-justify">Si, principalmente videojuegos, los cuales sólo los manejamos presencialmente.
+                        <p class="text-justify">Si, principalmente videojuegos, los cuales sólo los manejamos presencialmente. Todos los juegos publicados son nuevos. 
+                            El stock de juegos usados se ve directamente en tienda.
                         </p>
                     </div>
                     
@@ -118,6 +158,17 @@
                     <div class="service">
                         <h3 class="n-service"><span class="number">4</span>¿Venden productos digitales?</h3>
                         <p class="text-justify">No, no vendemos tarjetas de regalo ni juegos digitales. Solo trabajamos con juegos físicos para consolas.</p>
+                    </div>
+                    <div class="service">
+                        <h3 class="n-service"><span class="number">5</span>¿Realizan servicio técnico?</h3>
+                        <p class="text-justify">No, solo realizamos venta de productos relacionados a consolas actuales. No realizamos servicio técnico ni mantenciones.
+                        </p>
+                    </div>
+                    <div class="service">
+                        <h3 class="n-service"><span class="number">6</span>¿Realizan envíos?</h3>
+                        <p class="text-justify">Sí, se realizan envíos por pagar al cliente, vía Chilexpress o Correos de Chile previa coordinación. 
+                            Para confirmar nos pueden comunicar vía Instragam que es nuestro medio oficial.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -133,8 +184,8 @@
             <div class="contact-us">
                 <img src="./images/njoystick_banner.png" class="footer-banner">
                 <ul class="texto-con-borde">
-                    <li><strong>Dirección:</strong> El Roble 625 segundo piso, Chillán.</li>
-                    <li><strong>Ofrecemos:</strong> Videojuegos, Mangas, Figuras y Accesorios.</li>
+                    <li><strong>Dirección:</strong> El Roble 627 segundo piso, Chillán.</li>
+                    <li><strong>Ofrecemos:</strong> Videojuegos, Mangas, Figuras, Papelería y Accesorios.</li>
                     <li><strong>Horarios:</strong></li>
                     Lunes a Viernes 11:00 a 19:00 hrs.<br>
                     Sábado de 12:00 a 17:00 hrs.

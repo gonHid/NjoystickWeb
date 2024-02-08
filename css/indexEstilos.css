@@ -387,7 +387,7 @@ footer{
     }
 }
 @media only screen and (max-width: 530px) {
-    .img-nj-banner {
+    .img-nj-banner{
         width: 70% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
     }
 }
@@ -402,4 +402,8 @@ h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     border-radius: 50%;
     width:40px;
     height:40px;
+}
+.bg-body-tertiary{
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
 }

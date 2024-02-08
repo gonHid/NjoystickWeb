@@ -1,25 +1,13 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+    import { firebaseConfig } from "../config/config.js";
 
     const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
     const productosPorPagina = 8;
     // Configuración de Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
-        authDomain: "njoystickbd.firebaseapp.com",
-        databaseURL: "https://njoystickbd-default-rtdb.firebaseio.com/",
-        projectId: "njoystickbd",
-        storageBucket: "njoystickbd.appspot.com",
-        messagingSenderId: "9313380979",
-        appId: "1:9313380979:web:745bc3e16984d4d52b1806",
-        measurementId: "G-S464MG8HZN"
-      };
-
     // Inicializa Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
 
     // Obtiene una referencia a la base de datos
     const database = getDatabase(app);
@@ -61,6 +49,7 @@ function mostrarProductos(data, pagina) {
    
     const nombreProducto = document.createElement('h5');
     const categoria = document.createElement('p');
+    const isTomoDoble = document.createElement('p');
     const precio = document.createElement('p');
     const cantidad = document.createElement('p');
     if (producto.cantidad === 0) {
@@ -70,6 +59,17 @@ function mostrarProductos(data, pagina) {
 
       cantidad.textContent = "Stock disponible: "+ producto.cantidad;
     }
+    if(producto.tomoDoble!=null){
+      if(producto.tomoDoble){
+        isTomoDoble.textContent = "-TOMO DOBLE-";
+      }else{
+        isTomoDoble.textContent = "-TOMO SIMPLE-";
+      }
+    }else if(producto.alternativo){
+      isTomoDoble.textContent = "-TOMO DOBLE-";
+    }else{
+      isTomoDoble.textContent = "-TOMO SIMPLE-";
+    }
     imagenProducto.src = producto.urlImagen;
             
     nombreProducto.textContent = producto.nombre;
@@ -77,6 +77,9 @@ function mostrarProductos(data, pagina) {
   
     card.appendChild(imagenProducto)
     card.appendChild(nombreProducto)
+    if(producto.categoria == "Mangas"){
+      card.appendChild(isTomoDoble)
+    }
     card.appendChild(precio)
     card.appendChild(cantidad)
     card.style.maxWidth = '310px';

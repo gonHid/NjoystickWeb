@@ -21,6 +21,13 @@ body{
     padding: 60px 0;
 }
 
+.contenedorGaleria{
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
 .contenedorCat{
     gap: 0px!important;
     margin :0;
@@ -55,12 +62,12 @@ header{
 .head{
     text-align: center;
     padding: 0; /*Para sobreescribir el padding de .contenedor*/
-    height: 100%;
     display: flex; /*Lo hago flexible para que se posicione:*/
     justify-content: center; /*vertical*/
     align-items: center; /*horizontal*/
     flex-direction: column; /*para que un texto vaya sobre el otro*/
     color: #F2F2F2;
+    margin-top: 60px;
 }
 
 .hamburguer{
@@ -191,6 +198,13 @@ header{
     gap: 10px;
     padding: 20px;
 }
+.imagenGaleria {
+  min-height: 400px;
+  max-height: 400px;
+  min-width: 300px;
+  max-width: 300px;
+  border: 1px solid #add8e6;
+}
 /*Estilos para el container*/
 .contenedor{
     padding: 20px;
@@ -320,6 +334,13 @@ footer{
     margin-right: 20px;
     margin-top: 0;
 }
+.texto-con-borde {
+    font-size: 20px;
+    text-shadow: -1px -1px 0 black,  
+                  1px -1px 0 black,
+                 -1px 1px 0 black,
+                  1px 1px 0 black; /* Simula un borde negro */
+}
 @media screen and (max-width:800px){
     .menu-navegacion{
         width: 50vw;
@@ -365,10 +386,24 @@ footer{
         margin-bottom: 40px;
     }
 }
+@media only screen and (max-width: 530px) {
+    .img-nj-banner{
+        width: 70% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
 h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     font-family: 'Roboto', sans-serif;
 }
 .img-nj-banner{
     width: 25%;
     border-radius: 50%;
+}
+.img-nj-barnav{
+    border-radius: 50%;
+    width:40px;
+    height:40px;
+}
+.bg-body-tertiary{
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
 }

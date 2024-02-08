@@ -26,6 +26,25 @@ document.addEventListener('DOMContentLoaded', function() {
     agregarEvento('Otros','click', function() {
         redirigirPagina(this);
     });
+    agregarEvento('Papeleria','click', function() {
+        redirigirPagina(this);
+    });
+    agregarEvento('NavVideoJuegos','click', function() {
+        redirigirPagina(this);
+    });
+    agregarEvento('NavMangas','click', function() {
+        redirigirPagina(this);
+    });
+    agregarEvento('NavFiguras','click', function() {
+        redirigirPagina(this);
+    });
+    agregarEvento('NavPapeleria','click', function() {
+        redirigirPagina(this);
+    });
+    agregarEvento('NavOtros','click', function() {
+        redirigirPagina(this);
+    });
+
 
 });
 function redirigirPagina(elemento) {

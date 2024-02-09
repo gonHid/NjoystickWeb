@@ -57,7 +57,7 @@ function mostrarProductos(data, pagina) {
       cantidad.textContent = "SIN STOCK";
     }else{
 
-      cantidad.textContent = "Stock disponible: "+ producto.cantidad;
+      cantidad.textContent = "STOCK: DISPONIBLE";
     }
     if(producto.tomoDoble!=null){
       if(producto.tomoDoble){

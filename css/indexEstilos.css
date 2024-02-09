@@ -42,7 +42,7 @@ body{
 header{
     height: 40vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.5) 0%, rgba(0, 241, 254, 0.5) 100%),
-    url(../images/Collage\ NJoystick.png);
+    url("https://firebasestorage.googleapis.com/v0/b/njoystick-5ac79.appspot.com/o/elementos_web%2FCollage%20NJoystick.png?alt=media&token=9c7b6221-1faa-4a92-b729-0bd3e145684b");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -52,7 +52,7 @@ header{
 .banner{
     height: 30vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.502) 0%, rgba(0, 241, 254, 0.502) 100%),
-    url(../images/Collage\ NJoystick.png);
+    url("https://firebasestorage.googleapis.com/v0/b/njoystick-5ac79.appspot.com/o/elementos_web%2FCollage%20NJoystick.png?alt=media&token=9c7b6221-1faa-4a92-b729-0bd3e145684b");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

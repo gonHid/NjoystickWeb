@@ -72,17 +72,9 @@ function mostrarProductos(data, pagina) {
 
       cantidad.textContent = "STOCK: DISPONIBLE";
     }
-    if(producto.tomoDoble!=null){
-      if(producto.tomoDoble){
-        isTomoDoble.textContent = "-TOMO DOBLE-";
-      }else{
-        isTomoDoble.textContent = "-TOMO SIMPLE-";
-      }
-    }else if(producto.alternativo){
-      isTomoDoble.textContent = "-TOMO DOBLE-";
-    }else{
-      isTomoDoble.textContent = "-TOMO SIMPLE-";
-    }
+
+      isTomoDoble.textContent="Tipo: "+producto.tipoTomo;
+    
     imagenProducto.src = producto.urlImagen;
             
     nombreProducto.textContent = producto.nombre + " -"+producto.marca+"-";
@@ -292,17 +284,7 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
       cantidad.textContent = "STOCK: DISPONIBLE";
     }
 
-    if(producto.tomoDoble != null){
-      if(producto.tomoDoble){
-        isTomoDoble.textContent = "-TOMO DOBLE-";
-      } else {
-        isTomoDoble.textContent = "-TOMO SIMPLE-";
-      }
-    } else if(producto.alternativo){
-      isTomoDoble.textContent = "-TOMO DOBLE-";
-    } else {
-      isTomoDoble.textContent = "-TOMO SIMPLE-";
-    }
+    isTomoDoble.textContent="Tipo: "+producto.tipoTomo;
 
     imagenProducto.src = producto.urlImagen;        
     nombreProducto.textContent = producto.nombre + " -"+producto.marca+"-";

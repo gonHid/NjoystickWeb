@@ -90,6 +90,7 @@ function mostrarProductos(data, pagina) {
   }
 }
 
+
 function actualizarPaginador(data) {
   const productosFiltrados = Object.values(data).filter(producto => producto.categoria === categoriaSeleccionada);
   const totalProductos = productosFiltrados.length;
@@ -97,6 +98,44 @@ function actualizarPaginador(data) {
 
   const paginador = document.getElementById('pagination');
   paginador.innerHTML = '';
+
+  const mostrarBoton = (numeroPagina) => {
+    const botonPagina = document.createElement('li');
+    botonPagina.className = 'page-item';
+
+    const enlacePagina = document.createElement('a');
+    enlacePagina.className = 'page-link';
+    enlacePagina.textContent = numeroPagina;
+    enlacePagina.addEventListener('click', () => {
+      paginaActual = numeroPagina;
+      mostrarProductos(data, paginaActual);
+      actualizarPaginador(data);
+    });
+
+    // Marcar la página actual
+    if (numeroPagina === paginaActual) {
+      botonPagina.classList.add('active');
+    }
+
+    botonPagina.appendChild(enlacePagina);
+    paginador.appendChild(botonPagina);
+  };
+
+  // Botón de ir al inicio
+  const botonInicio = document.createElement('li');
+  botonInicio.className = 'page-item';
+  const enlaceInicio = document.createElement('a');
+  enlaceInicio.className = 'page-link';
+  enlaceInicio.innerHTML = 'Inicio';
+  enlaceInicio.addEventListener('click', () => {
+    if (paginaActual > 1) {
+      paginaActual = 1;
+      mostrarProductos(data, paginaActual);
+      actualizarPaginador(data);
+    }
+  });
+  botonInicio.appendChild(enlaceInicio);
+  paginador.appendChild(botonInicio);
 
   // Botón de retroceso
   const botonRetroceso = document.createElement('li');
@@ -114,27 +153,13 @@ function actualizarPaginador(data) {
   botonRetroceso.appendChild(enlaceRetroceso);
   paginador.appendChild(botonRetroceso);
 
-  // Botones de páginas
-  for (let i = 1; i <= totalPaginas; i++) {
-    const botonPagina = document.createElement('li');
-    botonPagina.className = 'page-item';
+  // Mostrar solo los números de página relevantes
+  const rangoPaginas = 2; // Puedes ajustar este valor según tus preferencias
+  const inicio = Math.max(1, paginaActual - rangoPaginas);
+  const fin = Math.min(totalPaginas, paginaActual + rangoPaginas);
 
-    const enlacePagina = document.createElement('a');
-    enlacePagina.className = 'page-link';
-    enlacePagina.textContent = i;
-    enlacePagina.addEventListener('click', () => {
-      paginaActual = i;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
-    });
-
-    // Marcar la página actual
-    if (i === paginaActual) {
-      botonPagina.classList.add('active');
-    }
-
-    botonPagina.appendChild(enlacePagina);
-    paginador.appendChild(botonPagina);
+  for (let i = inicio; i <= fin; i++) {
+    mostrarBoton(i);
   }
 
   // Botón de avance
@@ -153,18 +178,33 @@ function actualizarPaginador(data) {
   botonAvance.appendChild(enlaceAvance);
   paginador.appendChild(botonAvance);
 
+  // Botón de ir al final
+  const botonFinal = document.createElement('li');
+  botonFinal.className = 'page-item';
+  const enlaceFinal = document.createElement('a');
+  enlaceFinal.className = 'page-link';
+  enlaceFinal.innerHTML = 'Final';
+  enlaceFinal.addEventListener('click', () => {
+    if (paginaActual < totalPaginas) {
+      paginaActual = totalPaginas;
+      mostrarProductos(data, paginaActual);
+      actualizarPaginador(data);
+    }
+  });
+  botonFinal.appendChild(enlaceFinal);
+  paginador.appendChild(botonFinal);
+
   // Deshabilitar botones si no hay productos
   if (totalProductos === 0) {
+    botonInicio.classList.add('disabled');
     botonRetroceso.classList.add('disabled');
     botonAvance.classList.add('disabled');
+    botonFinal.classList.add('disabled');
   } else {
     // Habilitar/deshabilitar botones según la página actual
+    botonInicio.classList.toggle('disabled', paginaActual === 1);
     botonRetroceso.classList.toggle('disabled', paginaActual === 1);
     botonAvance.classList.toggle('disabled', paginaActual === totalPaginas);
+    botonFinal.classList.toggle('disabled', paginaActual === totalPaginas);
   }
 }
-
-
-    // Iterar sobre los datos y mostrar la informacion del producto
-    
-

@@ -20,7 +20,7 @@
     
 
     // Realiza una consulta SELECT simple
-    onValue(usuariosRef, (snapshot) => {
+    const onDataChange = (snapshot) => {
       const data = snapshot.val();
       console.log("Productos stock:", data);
       mostrarProductos(data, paginaActual);
@@ -35,8 +35,8 @@
         }
         actualizarPaginador(data, busqueda);
       });
-    });
-
+    };
+    const onDataChangeCallback = onValue(usuariosRef, onDataChange);
    
 
     // Define la cantidad de productos por página
@@ -103,6 +103,9 @@ function mostrarProductos(data, pagina) {
     productosGrid.appendChild(card);
     ajustarTamanioTexto(card);
   }
+  
+
+onDataChangeCallback();
 }
 
 

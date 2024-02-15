@@ -16,6 +16,8 @@
     //referencia al cuerpo del html
 
     var productosGrid = document.getElementById('productoGrid');
+    var searchInput = document.getElementById('searchInput');
+    
 
     // Realiza una consulta SELECT simple
     onValue(usuariosRef, (snapshot) => {
@@ -23,8 +25,19 @@
       console.log("Productos stock:", data);
       mostrarProductos(data, paginaActual);
       // Actualizar el paginador
-      actualizarPaginador(data);
+      actualizarPaginador(data, '');
+      searchInput.addEventListener('input', () => {
+        const busqueda = searchInput.value;
+        if (busqueda.trim() !== '') {
+          mostrarProductosConBusqueda(data, 1, busqueda);
+        } else {
+          mostrarProductos(data, 1);
+        }
+        actualizarPaginador(data, busqueda);
+      });
     });
+
+   
 
     // Define la cantidad de productos por página
 
@@ -91,8 +104,12 @@ function mostrarProductos(data, pagina) {
 }
 
 
-function actualizarPaginador(data) {
-  const productosFiltrados = Object.values(data).filter(producto => producto.categoria === categoriaSeleccionada);
+function actualizarPaginador(data, busqueda) {
+  const productosFiltrados = Object.values(data).filter(producto => 
+    producto.categoria === categoriaSeleccionada &&
+    producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
+  );
+
   const totalProductos = productosFiltrados.length;
   const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
 
@@ -108,8 +125,12 @@ function actualizarPaginador(data) {
     enlacePagina.textContent = numeroPagina;
     enlacePagina.addEventListener('click', () => {
       paginaActual = numeroPagina;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
+      if (busqueda.trim() !== '') {
+        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+      } else {
+        mostrarProductos(data, paginaActual);
+      }
+      actualizarPaginador(data, busqueda);
     });
 
     // Marcar la página actual
@@ -130,8 +151,12 @@ function actualizarPaginador(data) {
   enlaceInicio.addEventListener('click', () => {
     if (paginaActual > 1) {
       paginaActual = 1;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
+      if (busqueda.trim() !== '') {
+        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+      } else {
+        mostrarProductos(data, paginaActual);
+      }
+      actualizarPaginador(data, busqueda);
     }
   });
   botonInicio.appendChild(enlaceInicio);
@@ -146,8 +171,12 @@ function actualizarPaginador(data) {
   enlaceRetroceso.addEventListener('click', () => {
     if (paginaActual > 1) {
       paginaActual--;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
+      if (busqueda.trim() !== '') {
+        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+      } else {
+        mostrarProductos(data, paginaActual);
+      }
+      actualizarPaginador(data, busqueda);
     }
   });
   botonRetroceso.appendChild(enlaceRetroceso);
@@ -171,8 +200,12 @@ function actualizarPaginador(data) {
   enlaceAvance.addEventListener('click', () => {
     if (paginaActual < totalPaginas) {
       paginaActual++;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
+      if (busqueda.trim() !== '') {
+        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+      } else {
+        mostrarProductos(data, paginaActual);
+      }
+      actualizarPaginador(data, busqueda);
     }
   });
   botonAvance.appendChild(enlaceAvance);
@@ -187,8 +220,12 @@ function actualizarPaginador(data) {
   enlaceFinal.addEventListener('click', () => {
     if (paginaActual < totalPaginas) {
       paginaActual = totalPaginas;
-      mostrarProductos(data, paginaActual);
-      actualizarPaginador(data);
+      if (busqueda.trim() !== '') {
+        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+      } else {
+        mostrarProductos(data, paginaActual);
+      }
+      actualizarPaginador(data, busqueda);
     }
   });
   botonFinal.appendChild(enlaceFinal);
@@ -206,5 +243,70 @@ function actualizarPaginador(data) {
     botonRetroceso.classList.toggle('disabled', paginaActual === 1);
     botonAvance.classList.toggle('disabled', paginaActual === totalPaginas);
     botonFinal.classList.toggle('disabled', paginaActual === totalPaginas);
+  }
+}
+
+
+function mostrarProductosConBusqueda(data, pagina, busqueda) {
+  const inicio = (pagina - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+
+  const productosFiltrados = Object.values(data)
+    .filter(producto => producto.categoria === categoriaSeleccionada &&
+                        producto.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+    .slice(inicio, fin);
+
+  productosGrid.innerHTML = '';
+  for (const producto of productosFiltrados) {
+    const card = document.createElement('div');
+    card.className = 'card w-100';
+    
+    const imagenProducto = document.createElement('img');
+    // Establecer tamaño máximo y mínimo sin deformar la imagen
+    imagenProducto.style.maxWidth = '290px';
+    imagenProducto.style.maxHeight = '370px';
+    imagenProducto.style.minHeight = '370px';
+
+    const nombreProducto = document.createElement('h5');
+    const categoria = document.createElement('p');
+    const isTomoDoble = document.createElement('p');
+    const precio = document.createElement('p');
+    const cantidad = document.createElement('p');
+
+    if (producto.cantidad === 0) {
+      imagenProducto.className='sinStock';
+      cantidad.textContent = "SIN STOCK";
+    } else {
+      cantidad.textContent = "STOCK: DISPONIBLE";
+    }
+
+    if(producto.tomoDoble != null){
+      if(producto.tomoDoble){
+        isTomoDoble.textContent = "-TOMO DOBLE-";
+      } else {
+        isTomoDoble.textContent = "-TOMO SIMPLE-";
+      }
+    } else if(producto.alternativo){
+      isTomoDoble.textContent = "-TOMO DOBLE-";
+    } else {
+      isTomoDoble.textContent = "-TOMO SIMPLE-";
+    }
+
+    imagenProducto.src = producto.urlImagen;        
+    nombreProducto.textContent = producto.nombre;
+    precio.textContent = "Precio: $" + producto.precio;
+
+    card.appendChild(imagenProducto);
+    card.appendChild(nombreProducto);
+    if(producto.categoria == "Mangas"){
+      card.appendChild(isTomoDoble);
+    }
+    card.appendChild(precio);
+    card.appendChild(cantidad);
+    card.style.maxWidth = '310px';
+    card.style.minWidth = '310px';
+    card.style.maxHeight = '540px';
+    
+    productosGrid.appendChild(card);
   }
 }

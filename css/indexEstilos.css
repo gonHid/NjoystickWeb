@@ -218,7 +218,7 @@ header{
     will-change: transform;
     cursor: pointer;
     width: 250px;
-    
+    overflow: hidden;
 }
 
 /*Estilo para quitar el subrayado de las anclas*/

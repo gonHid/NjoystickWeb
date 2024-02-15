@@ -85,7 +85,8 @@ function mostrarProductos(data, pagina) {
     }
     imagenProducto.src = producto.urlImagen;
             
-    nombreProducto.textContent = producto.nombre;
+    nombreProducto.textContent = producto.nombre + " -"+producto.marca+"-";
+    nombreProducto.style.fontWeight = 'bold';
     precio.textContent = "Precio: $" + producto.precio;
   
     card.appendChild(imagenProducto)
@@ -100,6 +101,7 @@ function mostrarProductos(data, pagina) {
     card.style.maxHeight = '540px';
     
     productosGrid.appendChild(card);
+    ajustarTamanioTexto(card);
   }
 }
 
@@ -250,10 +252,16 @@ function actualizarPaginador(data, busqueda) {
 function mostrarProductosConBusqueda(data, pagina, busqueda) {
   const inicio = (pagina - 1) * productosPorPagina;
   const fin = inicio + productosPorPagina;
+  const palabrasBusqueda = busqueda.toLowerCase().split(' ').filter(Boolean);
 
   const productosFiltrados = Object.values(data)
-    .filter(producto => producto.categoria === categoriaSeleccionada &&
-                        producto.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+    .filter(producto => 
+      producto.categoria === categoriaSeleccionada &&
+      palabrasBusqueda.every(palabra => 
+        producto.nombre.toLowerCase().includes(palabra) || 
+        producto.marca.toLowerCase().includes(palabra)
+      )
+    )
     .slice(inicio, fin);
 
   productosGrid.innerHTML = '';
@@ -268,6 +276,7 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
     imagenProducto.style.minHeight = '370px';
 
     const nombreProducto = document.createElement('h5');
+    nombreProducto.style.fontWeight = 'bold';
     const categoria = document.createElement('p');
     const isTomoDoble = document.createElement('p');
     const precio = document.createElement('p');
@@ -293,7 +302,7 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
     }
 
     imagenProducto.src = producto.urlImagen;        
-    nombreProducto.textContent = producto.nombre;
+    nombreProducto.textContent = producto.nombre + " -"+producto.marca+"-";
     precio.textContent = "Precio: $" + producto.precio;
 
     card.appendChild(imagenProducto);
@@ -308,5 +317,20 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
     card.style.maxHeight = '540px';
     
     productosGrid.appendChild(card);
+    ajustarTamanioTexto(card);
+  }
+}
+
+function ajustarTamanioTexto(card) {
+  const cantidad = card.querySelector('p:last-child'); // Selecciona el último elemento <p> dentro de la card
+
+  // Verifica si la cantidad se desborda verticalmente
+  if (cantidad.offsetTop + cantidad.clientHeight > card.clientHeight) {
+    const nombre = card.querySelector('h5'); // Selecciona el elemento que contiene el nombre
+    const nuevoTamanio = 16; // Puedes ajustar este valor según tus preferencias
+
+    // Aplica el nuevo tamaño de fuente al elemento que contiene el nombre
+    nombre.style.fontSize = `${nuevoTamanio}px`;
+    nombre.style.fontWeight = 'bold';
   }
 }

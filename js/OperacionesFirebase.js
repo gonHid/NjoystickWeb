@@ -47,6 +47,7 @@ function mostrarProductos(data, pagina) {
   const fin = inicio + productosPorPagina;
   const productosEnPagina = Object.values(data)
     .filter(producto => producto.categoria === categoriaSeleccionada)
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
 
   productosGrid.innerHTML = '';
@@ -257,6 +258,7 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
         producto.marca.toLowerCase().includes(palabra)
       )
     )
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
 
   productosGrid.innerHTML = '';

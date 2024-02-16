@@ -22,7 +22,6 @@
     // Realiza una consulta SELECT simple
     const onDataChange = (snapshot) => {
       const data = snapshot.val();
-      console.log("Productos stock:", data);
       mostrarProductos(data, paginaActual);
       // Actualizar el paginador
       actualizarPaginador(data, '');

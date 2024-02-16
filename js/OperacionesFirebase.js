@@ -29,7 +29,7 @@
       searchInput.addEventListener('input', () => {
         const busqueda = searchInput.value;
         if (busqueda.trim() !== '') {
-          mostrarProductosConBusqueda(data, 1, busqueda);
+          mostrarProductosConBusqueda(data, 1, busqueda,false);
         } else {
           mostrarProductos(data, 1);
         }
@@ -124,7 +124,7 @@ function actualizarPaginador(data, busqueda) {
     enlacePagina.addEventListener('click', () => {
       paginaActual = numeroPagina;
       if (busqueda.trim() !== '') {
-        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+        mostrarProductosConBusqueda(data, paginaActual, busqueda,true);
       } else {
         mostrarProductos(data, paginaActual);
       }
@@ -150,7 +150,7 @@ function actualizarPaginador(data, busqueda) {
     if (paginaActual > 1) {
       paginaActual = 1;
       if (busqueda.trim() !== '') {
-        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+        mostrarProductosConBusqueda(data, paginaActual, busqueda,true);
       } else {
         mostrarProductos(data, paginaActual);
       }
@@ -170,7 +170,7 @@ function actualizarPaginador(data, busqueda) {
     if (paginaActual > 1) {
       paginaActual--;
       if (busqueda.trim() !== '') {
-        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+        mostrarProductosConBusqueda(data, paginaActual, busqueda,true);
       } else {
         mostrarProductos(data, paginaActual);
       }
@@ -199,7 +199,7 @@ function actualizarPaginador(data, busqueda) {
     if (paginaActual < totalPaginas) {
       paginaActual++;
       if (busqueda.trim() !== '') {
-        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+        mostrarProductosConBusqueda(data, paginaActual, busqueda,true);
       } else {
         mostrarProductos(data, paginaActual);
       }
@@ -219,7 +219,7 @@ function actualizarPaginador(data, busqueda) {
     if (paginaActual < totalPaginas) {
       paginaActual = totalPaginas;
       if (busqueda.trim() !== '') {
-        mostrarProductosConBusqueda(data, paginaActual, busqueda);
+        mostrarProductosConBusqueda(data, paginaActual, busqueda,true);
       } else {
         mostrarProductos(data, paginaActual);
       }
@@ -245,7 +245,7 @@ function actualizarPaginador(data, busqueda) {
 }
 
 
-function mostrarProductosConBusqueda(data, pagina, busqueda) {
+function mostrarProductosConBusqueda(data, pagina, busqueda, isBoton) {
   const inicio = (pagina - 1) * productosPorPagina;
   const fin = inicio + productosPorPagina;
   const palabrasBusqueda = busqueda.toLowerCase().split(' ').filter(Boolean);
@@ -260,7 +260,9 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
     )
     .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
-    paginaActual = 1;
+    if(!isBoton){
+      paginaActual = 1;
+    }
   productosGrid.innerHTML = '';
   for (const producto of productosFiltrados) {
     const card = document.createElement('div');

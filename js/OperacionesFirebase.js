@@ -4,7 +4,7 @@
 
     const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
-    const productosPorPagina = 8;
+    const productosPorPagina = 16;
     // Configuración de Firebase
     // Inicializa Firebase
     const app = initializeApp(firebaseConfig);

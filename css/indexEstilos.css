@@ -42,7 +42,7 @@ body{
 header{
     height: 40vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.5) 0%, rgba(0, 241, 254, 0.5) 100%),
-    url("https://firebasestorage.googleapis.com/v0/b/njoystick-5ac79.appspot.com/o/elementos_web%2FCollage%20NJoystick.png?alt=media&token=9c7b6221-1faa-4a92-b729-0bd3e145684b");
+    url(../images/Collage\ NJoystick.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -52,7 +52,7 @@ header{
 .banner{
     height: 30vh; /*viewport height (altura del dispositivo)*/
     background-image: linear-gradient(to right, rgba(79, 172, 254, 0.502) 0%, rgba(0, 241, 254, 0.502) 100%),
-    url("https://firebasestorage.googleapis.com/v0/b/njoystick-5ac79.appspot.com/o/elementos_web%2FCollage%20NJoystick.png?alt=media&token=9c7b6221-1faa-4a92-b729-0bd3e145684b");
+    url(../images/Collage\ NJoystick.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -201,7 +201,6 @@ header{
 .imagenGaleria {
   min-height: 400px;
   max-height: 400px;
-  min-width: 300px;
   max-width: 300px;
   border: 1px solid #add8e6;
 }
@@ -218,7 +217,7 @@ header{
     will-change: transform;
     cursor: pointer;
     width: 250px;
-    overflow: hidden;
+    
 }
 
 /*Estilo para quitar el subrayado de las anclas*/
@@ -386,24 +385,45 @@ footer{
         margin-bottom: 40px;
     }
 }
-@media only screen and (max-width: 530px) {
+@media only screen and (max-width: 370px) {
     .img-nj-banner{
-        width: 70% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+        width: 90% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
+@media only screen and (min-width:371px) and (max-width: 530px) {
+    .img-nj-banner{
+        width: 60% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
+@media only screen and (min-width:531px) and  (max-width: 767px) {
+    .img-nj-banner{
+        width: 40% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
+@media only screen and (min-width:768px) and  (max-width: 1024px) {
+    .img-nj-banner{
+        width: 30% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+}
+@media only screen and (max-width: 767px){
+    .card-grid-products{
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 628px){
+    .card-grid-index{
+        justify-content: center;
     }
 }
 h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     font-family: 'Roboto', sans-serif;
 }
 .img-nj-banner{
-    width: 25%;
+    width: 20%;
     border-radius: 50%;
 }
 .img-nj-barnav{
     border-radius: 50%;
     width:40px;
     height:40px;
-}
-.bg-body-tertiary{
-    --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
 }

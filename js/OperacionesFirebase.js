@@ -260,7 +260,7 @@ function mostrarProductosConBusqueda(data, pagina, busqueda) {
     )
     .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
-
+    paginaActual = 1;
   productosGrid.innerHTML = '';
   for (const producto of productosFiltrados) {
     const card = document.createElement('div');

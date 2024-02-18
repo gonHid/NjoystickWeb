@@ -3,8 +3,6 @@ function agregarEvento(id, evento, funcion) {
     var elemento = document.getElementById(id);
     if (elemento) {
         elemento.addEventListener(evento, funcion);
-    } else {
-        console.error("El elemento con ID '" + id + "' no fue encontrado.");
     }
 }
 

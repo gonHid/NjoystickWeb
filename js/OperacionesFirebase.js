@@ -2,7 +2,7 @@
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
     import { firebaseConfig } from "../config/config.js";
 
-    const categoriaSeleccionada = localStorage.getItem("idSeleccionada");
+    var categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
     const productosPorPagina = 16;
     // Configuración de Firebase
@@ -34,6 +34,7 @@
         }
         actualizarPaginador(data, busqueda);
       });
+      definirBotones(data);
     };
     const onDataChangeCallback = onValue(usuariosRef, onDataChange);
    
@@ -321,4 +322,42 @@ function ajustarTamanioTexto(card) {
     nombre.style.fontSize = `${nuevoTamanio}px`;
     nombre.style.fontWeight = 'bold';
   }
+}
+
+function agregarEvento(id, evento, funcion) {
+  var elemento = document.getElementById(id);
+  if (elemento) {
+      elemento.addEventListener(evento, funcion);
+  } else {
+      console.error("El elemento con ID '" + id + "' no fue encontrado.");
+  }
+}
+
+function definirBotones(data){
+
+  agregarEvento('VideojuegosMin', 'click', function() {
+    recargarProductos(data,this);
+  });
+
+  agregarEvento('MangasMin','click', function() {
+    recargarProductos(data,this);
+  });
+
+  agregarEvento('FigurasMin','click', function() {
+    recargarProductos(data,this);
+  });
+
+  agregarEvento('OtrosMin','click', function() {
+    recargarProductos(data,this);
+  });
+  agregarEvento('PapeleriaMin','click', function() {
+    recargarProductos(data,this);
+  });
+};
+
+function recargarProductos(data,elemento) {
+  categoriaSeleccionada = elemento.getAttribute("data-id");
+  mostrarProductos(data, 1);
+  actualizarPaginador(data, '');
+  searchInput.value = '';
 }

@@ -59,7 +59,7 @@ function mostrarProductos(data, pagina) {
     imagenProducto.style.maxWidth = '290px';
     imagenProducto.style.maxHeight = '370px';
     imagenProducto.style.minHeight = '370px';
-   
+    imagenProducto.loading = 'lazy';
     const nombreProducto = document.createElement('h5');
     const categoria = document.createElement('p');
     const isTomoDoble = document.createElement('p');

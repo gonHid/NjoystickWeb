@@ -355,9 +355,16 @@ function definirBotones(data){
   });
 };
 
-function recargarProductos(data,elemento) {
+function recargarProductos(data, elemento) {
   categoriaSeleccionada = elemento.getAttribute("data-id");
+  paginaActual = 1; // Reinicia la página a 1 al cambiar la categoría
   mostrarProductos(data, 1);
   actualizarPaginador(data, '');
+
+  // Selecciona manualmente el botón de la primera página
+  const paginador = document.getElementById('pagination');
+  const primerBoton = paginador.querySelector('.page-item:first-child');
+  primerBoton.classList.add('active');
+
   searchInput.value = '';
 }

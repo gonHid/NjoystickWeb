@@ -30,6 +30,7 @@
         if (busqueda.trim() !== '') {
           mostrarProductosConBusqueda(data, 1, busqueda,false);
         } else {
+          paginaActual = 1;
           mostrarProductos(data, 1);
         }
         actualizarPaginador(data, busqueda);

@@ -191,16 +191,6 @@ header{
     color: #252940;
     text-align: center;
 }
-/*Titulo buscador*/
-.titulo-busqueda{
-    display: flex;
-    justify-content: left;
-    margin-left: 20px;
-}
-/*separar selector de marca y buscador en pantallas pequenias */
-.buscar{
-    margin-top: 20px;
-}
 /* Estilo para la cuadrícula de tarjetas */
 .card-grid {
     display: grid;
@@ -397,39 +387,33 @@ footer{
 }
 @media only screen and (max-width: 370px) {
     .img-nj-banner{
-        width: 90% !important; /* Ajusta el tamaño del logo para pantallas más pequeñas */
+        width: 90% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
     }
-   
 }
 @media only screen and (min-width:371px) and (max-width: 530px) {
     .img-nj-banner{
-        width: 60% !important; /* Ajusta el tamaño del logo para pantallas más pequeñas */
+        width: 60% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
     }
-    
 }
 @media only screen and (min-width:531px) and  (max-width: 767px) {
     .img-nj-banner{
-        width: 40% !important; /* Ajusta el tamaño del logo para pantallas más pequeñas */
+        width: 40% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
     }
-    
 }
 @media only screen and (min-width:768px) and  (max-width: 1024px) {
     .img-nj-banner{
-        width: 30% !important; /* Ajusta el tamaño del logo para pantallas más pequeñas */
+        width: 30% !important; / Ajusta el tamaño del logo para pantallas más pequeñas */
     }
-    
 }
 @media only screen and (max-width: 767px){
     .card-grid-products{
         justify-content: center;
     }
-    
 }
 @media only screen and (max-width: 628px){
     .card-grid-index{
         justify-content: center;
     }
-    
 }
 h1, h2, h3, h4, h5, h6, p, a, span, strong, em {
     font-family: 'Roboto', sans-serif;

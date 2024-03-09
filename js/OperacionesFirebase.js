@@ -2,6 +2,7 @@
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
     import { firebaseConfig } from "../config/config.js";
     var opcionSeleccionada = false;
+    var cambioCategoria= true;
     var categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
     var opcionMarca;
@@ -28,17 +29,23 @@
       // Actualizar el paginador
       actualizarPaginador(data, '');
       
-
+      
       // Agregar evento change al select
       document.getElementById('buscaMarca').addEventListener('change', function() {
         // Función a ejecutar cuando el cliente elija una opción
         opcionMarca=this.value;
         opcionSeleccionada = true;
-        mostrarProductos(data, 1);
-        actualizarPaginador(data, '');
-        searchInput.value = '';
-
+        
+        
+        const busqueda = searchInput.value;
+        if (busqueda.trim() !== '') {
+          mostrarProductosConBusqueda(data, 1, busqueda,false);
+        } else {
+          mostrarProductos(data, 1);
+        }
+        actualizarPaginador(data, busqueda);
       });
+
       searchInput.addEventListener('input', () => {
         const busqueda = searchInput.value;
         if (busqueda.trim() !== '') {
@@ -70,8 +77,10 @@ function mostrarProductos(data, pagina) {
     document.getElementById('buscar').classList.add('col-md-8');
   }
 
+  if(cambioCategoria){
+  //Llamamos las marcas de los productos
   const marcasUnicas = new Set();
-
+  cambioCategoria=false;
   Object.values(data)
     .filter(producto => producto.categoria === categoriaSeleccionada)
     .forEach(producto => marcasUnicas.add(producto.marca));
@@ -94,6 +103,7 @@ function mostrarProductos(data, pagina) {
       opcion.textContent = marca;
       select.appendChild(opcion);
     });   
+  }
   let productosEnPagina;
   if(document.getElementById('buscaMarca').value==''){
     productosEnPagina = Object.values(data)
@@ -429,9 +439,11 @@ function definirBotones(data){
 };
 
 function recargarProductos(data,elemento) {
+  opcionSeleccionada= false;
+  cambioCategoria=true;
   categoriaSeleccionada = elemento.getAttribute("data-id");
   mostrarProductos(data, 1);
   actualizarPaginador(data, '');
   searchInput.value = '';
-  opcionSeleccionada= false;
+
 }

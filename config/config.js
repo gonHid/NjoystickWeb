@@ -1,12 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDkWMojieIWvEb5n8np3Xa5JILGJhc0tdw",
-  authDomain: "njoystick-5ac79.firebaseapp.com",
-  databaseURL: "https://njoystick-5ac79-default-rtdb.firebaseio.com",
-  projectId: "njoystick-5ac79",
-  storageBucket: "njoystick-5ac79.appspot.com",
-  messagingSenderId: "40490794778",
-  appId: "1:40490794778:web:682295a8882b8730c2b6a3",
-  measurementId: "G-PKFPCXEH5Y"
+  apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
+  authDomain: "njoystickbd.firebaseapp.com",
+  databaseURL: "https://njoystickbd-default-rtdb.firebaseio.com/",
+  projectId: "njoystickbd",
+  storageBucket: "njoystickbd.appspot.com",
+  messagingSenderId: "9313380979",
+  appId: "1:9313380979:web:745bc3e16984d4d52b1806",
+  measurementId: "G-S464MG8HZN"
 };
 
  export { firebaseConfig };

@@ -1,4 +1,4 @@
-// Configuración de Firebase
+// Configuración de Firebase TESTING
 const firebaseConfig = {
     apiKey: "AIzaSyAlRRAIdjjV34f_4JJvrdpHDZCHLMRR7N8",
     authDomain: "njoystickbd.firebaseapp.com",

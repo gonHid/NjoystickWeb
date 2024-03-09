@@ -1,14 +1,16 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
     import { firebaseConfig } from "../config/config.js";
-
+    var opcionSeleccionada = false;
     var categoriaSeleccionada = localStorage.getItem("idSeleccionada");
     let paginaActual = 1;
+    var opcionMarca;
     const productosPorPagina = 16;
+    
     // Configuración de Firebase
     // Inicializa Firebase
     const app = initializeApp(firebaseConfig);
-
+    
     // Obtiene una referencia a la base de datos
     const database = getDatabase(app);
     const usuariosRef = ref(database, 'productos');
@@ -25,6 +27,18 @@
       mostrarProductos(data, paginaActual);
       // Actualizar el paginador
       actualizarPaginador(data, '');
+      
+
+      // Agregar evento change al select
+      document.getElementById('buscaMarca').addEventListener('change', function() {
+        // Función a ejecutar cuando el cliente elija una opción
+        opcionMarca=this.value;
+        opcionSeleccionada = true;
+        mostrarProductos(data, 1);
+        actualizarPaginador(data, '');
+        searchInput.value = '';
+
+      });
       searchInput.addEventListener('input', () => {
         const busqueda = searchInput.value;
         if (busqueda.trim() !== '') {
@@ -45,11 +59,54 @@
 function mostrarProductos(data, pagina) {
   const inicio = (pagina - 1) * productosPorPagina;
   const fin = inicio + productosPorPagina;
-  const productosEnPagina = Object.values(data)
+
+  if(categoriaSeleccionada!='Videojuegos' && categoriaSeleccionada!='Mangas'){
+    document.getElementById('buscaMarca').style.display='none';
+    document.getElementById('buscar').classList.remove('col-md-8');
+    document.getElementById('buscar').classList.add('col-md-12');
+  }else{
+    document.getElementById('buscaMarca').style.display='block';
+    document.getElementById('buscar').classList.remove('col-md-12');
+    document.getElementById('buscar').classList.add('col-md-8');
+  }
+
+  const marcasUnicas = new Set();
+
+  Object.values(data)
+    .filter(producto => producto.categoria === categoriaSeleccionada)
+    .forEach(producto => marcasUnicas.add(producto.marca));
+
+    const select = document.getElementById('buscaMarca');
+
+    // Limpiar opciones existentes
+    select.innerHTML = '';
+  
+    // Agregar la opción por defecto
+    const opcionPorDefecto = document.createElement('option');
+    opcionPorDefecto.value = '';
+    opcionPorDefecto.textContent = 'Buscar por marca...';
+    select.appendChild(opcionPorDefecto);
+  
+    // Agregar las opciones de marcas
+    marcasUnicas.forEach(marca => {
+      const opcion = document.createElement('option');
+      opcion.value = marca;
+      opcion.textContent = marca;
+      select.appendChild(opcion);
+    });   
+  let productosEnPagina;
+  if(document.getElementById('buscaMarca').value==''){
+    productosEnPagina = Object.values(data)
     .filter(producto => producto.categoria === categoriaSeleccionada)
     .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
-
+  }else{
+   productosEnPagina = Object.values(data)
+    .filter(producto => producto.categoria === categoriaSeleccionada)
+    .filter(producto=>producto.marca===opcionMarca)
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
+    .slice(inicio, fin);
+  }
   productosGrid.innerHTML = '';
   for (const producto of productosEnPagina) {
     const card = document.createElement('div');
@@ -249,17 +306,33 @@ function mostrarProductosConBusqueda(data, pagina, busqueda, isBoton) {
   const inicio = (pagina - 1) * productosPorPagina;
   const fin = inicio + productosPorPagina;
   const palabrasBusqueda = busqueda.toLowerCase().split(' ').filter(Boolean);
-
-  const productosFiltrados = Object.values(data)
+  let productosFiltrados;
+  if(document.getElementById('buscaMarca').value==''){
+    productosFiltrados = Object.values(data)
     .filter(producto => 
       producto.categoria === categoriaSeleccionada &&
       palabrasBusqueda.every(palabra => 
         producto.nombre.toLowerCase().includes(palabra) || 
         producto.marca.toLowerCase().includes(palabra)
       )
+      
     )
     .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .slice(inicio, fin);
+  }else{
+    productosFiltrados = Object.values(data)
+    .filter(producto => 
+      producto.categoria === categoriaSeleccionada &&
+      palabrasBusqueda.every(palabra => 
+        producto.nombre.toLowerCase().includes(palabra) || 
+        producto.marca.toLowerCase().includes(palabra)
+      )
+      
+    ).filter(producto=>producto.marca===opcionMarca)
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
+    .slice(inicio, fin);
+  }
+   
     if(!isBoton){
       paginaActual = 1;
     }
@@ -360,4 +433,5 @@ function recargarProductos(data,elemento) {
   mostrarProductos(data, 1);
   actualizarPaginador(data, '');
   searchInput.value = '';
+  opcionSeleccionada= false;
 }
